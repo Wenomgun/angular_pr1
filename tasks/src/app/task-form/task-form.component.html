@@ -1,0 +1,12 @@
+<div class="task-form">
+  <div>
+    <input class="task-form-input"
+           type="text" placeholder="Add task title"
+           [(ngModel)]="title"
+           (keydown.enter)="onAddTask()"
+    >
+  </div>
+  <div>
+    <button class="task-form-button" (click)="onAddTask()">Add task</button>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
-import {retry} from "rxjs/operators";
+import {tap} from "rxjs/operators";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 export interface ITask {
   id: number;
@@ -10,11 +12,17 @@ export interface ITask {
 
 @Injectable({providedIn: 'root'})
 export class TasksService {
-  public tasks: ITask[] = [
-    {id: 1, title: 'Задание 1', completed: false, date: new Date()},
-    {id: 2, title: 'Задание 2', completed: true, date: new Date()},
-    {id: 3, title: 'Задание 3', completed: false, date: new Date()}
-  ];
+  public tasks: ITask[] = [];
+
+  constructor(private http: HttpClient) {
+  }
+
+  fetchTasks(): Observable<ITask[]> {
+    return this.http.get<ITask[]>('https://jsonplaceholder.typicode.com/todos')
+      .pipe(tap((tasks) => {
+        this.tasks = tasks;
+      }));
+  }
 
   onToggleTask(id: number): void {
     const idTask = this.tasks.findIndex((t) => t.id === id );
@@ -23,5 +31,9 @@ export class TasksService {
 
   onRemoveTask(id: number): void {
     this.tasks = this.tasks.filter((t) => t.id !== id );
+  }
+
+  onAddTask(task: ITask): void {
+    this.tasks.push(task);
   }
 }
