@@ -1,0 +1,13 @@
+<ul>
+  <li *ngFor="let task of tasksService.tasks; let i = index" class="task" [class.task-completed]="task.completed">
+    <div class="task-checkbox">
+      <input type="checkbox" [checked]="task.completed" (change)="onChanged(task.id)">
+    </div>
+    <div class="task-number">{{i + 1}}</div>
+    <div class="task-title">{{task.title}}</div>
+    <div class="task-date">{{task.date | date: 'fullDate'}}</div>
+    <div>
+      <button class="remove" (click)="onRemove(task.id)">&times;</button>
+    </div>
+  </li>
+</ul>
