@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ITask, TasksService} from "../shared/tasks.service";
+import {ITask, TasksService} from "../../shared/tasks.service";
 
 @Component({
   selector: 'app-task-form',
