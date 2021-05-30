@@ -1,5 +1,8 @@
-<div class="container">
-  <h1>{{ appTitle }}</h1>
-  <app-task-form></app-task-form>
-  <app-tasks></app-tasks>
-</div>
+<!--all header-->
+<ul>
+  <li *ngFor="let item of navigator">
+    <a (click)="navigate(item.path)">{{item.caption}}</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

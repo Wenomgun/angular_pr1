@@ -18,7 +18,7 @@ export class TasksService {
   }
 
   fetchTasks(): Observable<ITask[]> {
-    return this.http.get<ITask[]>('https://jsonplaceholder.typicode.com/todos')
+    return this.http.get<ITask[]>('../../assets/tasksData.json')
       .pipe(tap((tasks) => {
         this.tasks = tasks;
       }));

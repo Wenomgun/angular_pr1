@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TasksService} from "../shared/tasks.service";
+import {TasksService} from "../../shared/tasks.service";
 import {delay} from "rxjs/operators";
 @Component({
   selector: 'app-tasks',
